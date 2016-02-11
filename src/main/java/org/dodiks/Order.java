@@ -30,4 +30,14 @@ public class Order {
 	public Map<Product, Long> getRequiredProducts() {
 		return requiredProducts;
 	}
+
+	@Override
+	public String toString() {
+		return "Order{" +
+				"id=" + id +
+				", x=" + x +
+				", y=" + y +
+				", requiredProducts=" + requiredProducts +
+				'}';
+	}
 }

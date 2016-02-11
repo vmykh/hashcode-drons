@@ -73,4 +73,18 @@ public class Settings {
 	public void setOrders(int orders) {
 		this.orders = orders;
 	}
+
+	@Override
+	public String toString() {
+		return "Settings{" +
+				"rows=" + rows +
+				", columns=" + columns +
+				", drones=" + drones +
+				", maxTurns=" + maxTurns +
+				", maxPayload=" + maxPayload +
+				", productTypes=" + productTypes +
+				", warehouses=" + warehouses +
+				", orders=" + orders +
+				'}';
+	}
 }

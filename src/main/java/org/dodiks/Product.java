@@ -33,4 +33,12 @@ public class Product {
 	public int hashCode() {
 		return type;
 	}
+
+	@Override
+	public String toString() {
+		return "Product{" +
+				"type=" + type +
+				", weight=" + weight +
+				'}';
+	}
 }

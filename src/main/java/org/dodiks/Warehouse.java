@@ -30,4 +30,14 @@ public class Warehouse {
 	public Map<Product, Long> getProducts() {
 		return products;
 	}
+
+	@Override
+	public String toString() {
+		return "Warehouse{" +
+				"id=" + id +
+				", x=" + x +
+				", y=" + y +
+				", products=" + products +
+				'}';
+	}
 }
