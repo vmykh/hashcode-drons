@@ -2,6 +2,9 @@ package org.dodiks;
 
 import java.util.Map;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+import static com.google.common.base.Preconditions.checkState;
+
 public class Warehouse {
 	private final int id;
 	private final int x;
@@ -29,6 +32,16 @@ public class Warehouse {
 
 	public Map<Product, Long> getProducts() {
 		return products;
+	}
+
+	public long getProductsAvailable(Product product) {
+		return products.containsKey(product) ? checkNotNull(products.get(product)) : 0;
+	}
+
+	public void decrease(Product product, long amount) {
+		long available = getProductsAvailable(product);
+		checkState(available >= amount);
+		products.put(product, available - amount);
 	}
 
 	@Override
