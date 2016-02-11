@@ -48,7 +48,7 @@ public class Parser {
         for (int i = 0; i < items.length; i++) {
             Product product = new Product(i, Integer.parseInt(items[i]));
             products.add(product);
-            System.out.println("Product: " + product);
+//            System.out.println("Product: " + product);
         }
 
         items = br.readLine().split(" ");
@@ -66,7 +66,7 @@ public class Parser {
             }
             Warehouse warehouse = new Warehouse(i, x, y, productMap);
             warehouses.add(warehouse);
-            System.out.println("Warehouse: " + warehouse);
+//            System.out.println("Warehouse: " + warehouse);
         }
 
         items = br.readLine().split(" ");
@@ -92,11 +92,11 @@ public class Parser {
             }
             Order order = new Order(i, x, y, productLongMap);
             orders.add(order);
-            System.out.println("Order: " + order);
+//            System.out.println("Order: " + order);
         }
 
 
-        System.out.println("Settings: " + settings);
+//        System.out.println("Settings: " + settings);
     }
 
     public Settings getSettings() {
