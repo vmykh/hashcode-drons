@@ -2,10 +2,7 @@ package org.dodiks;
 
 import org.dodiks.instruction.Instruction;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 /**
@@ -19,16 +16,24 @@ public class Main {
         Parser parser = new Parser(pathResources + "/input_data_set.in");
         parser.perform();
 
-	    SimpleAlgo algo = new SimpleAlgo(parser.getWarehouses(), parser.getOrders(), parser.getSettings());
+	    SimpleAlgo algo = new SimpleAlgo(parser.getWarehouses(), parser.getOrders().subList(0, parser.getOrders().size() / ), parser.getSettings());
 
 	    List<Instruction> instructions = algo.run();
 
-	    FileWriter writer = new FileWriter(new File(pathResources + "/input_data_set.out"));
 
-	    writer.write("" + instructions.size() + "\n");
+	    FileWriter fileWriter = new FileWriter(new File(pathResources + "/input_data_set.out"));
+
+	    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+	    bufferedWriter.write("" + instructions.size() + "\n");
+	    int i = 0;
 	    for (Instruction instruction : instructions) {
-		    writer.write(instruction.print() + "\n");
+		    i++;
+		    bufferedWriter.write(instruction.print() + "\n");
 	    }
+
+	    bufferedWriter.close();
+	    System.out.println("Iterations: " + i);
     }
 
 }

@@ -7,12 +7,15 @@ public class Load implements Instruction {
 	private final int warehouseId;
 	private final int productType;
 	private final int productsAmouns;
+	private final int turns;
 
-	public Load(int dronId, int warehouseId, int productType, int productsAmouns) {
+
+	public Load(int dronId, int warehouseId, int productType, int productsAmouns, int turns) {
 		this.dronId = dronId;
 		this.warehouseId = warehouseId;
 		this.productType = productType;
 		this.productsAmouns = productsAmouns;
+		this.turns = turns;
 	}
 
 	public int getDronId() {
@@ -29,6 +32,11 @@ public class Load implements Instruction {
 
 	public int getProductsAmouns() {
 		return productsAmouns;
+	}
+
+	@Override
+	public int getTurns() {
+		return turns;
 	}
 
 	@Override

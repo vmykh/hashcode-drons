@@ -24,7 +24,19 @@ public class SimpleAlgo {
 
 	public List<Instruction> run() {
 		int dronId = 0;
+
+		List<Drone> drones = new ArrayList<Drone>();
+		int dronX = warehouses.get(0).getX();
+		int dronY = warehouses.get(0).getY();
+		for (int i = 0; i < settings.getDrones(); i++) {
+			drones.add(new Drone(dronX, dronY));
+		}
+
 		List<Instruction> instructions = new ArrayList<Instruction>();
+
+
+
+		int currentDronIndex = 0;
 
 		outer_loop:
 		while (orders.size() > 0) {
@@ -61,8 +73,10 @@ public class SimpleAlgo {
 //					}
 					requiredProducts.put(product, neededAfterDelivery);
 
-					instructions.add(new Load(dronId, warehouse.getId(), product.getType(), loaded));
-					instructions.add(new Deliver(dronId, currentOrder.getId(), product.getType(), loaded));
+					instructions.add(new Load(currentDronIndex, warehouse.getId(), product.getType(), loaded, 0));
+					instructions.add(new Deliver(currentDronIndex, currentOrder.getId(), product.getType(), loaded, 0));
+
+					currentDronIndex = (currentDronIndex + 1) % settings.getDrones();
 
 					continue outer_loop;
 				}
